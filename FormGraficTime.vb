@@ -13,10 +13,19 @@ Public Class FormGraficTime
     Dim lblTitle3 As New Label()
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        '===DEBUG===
+        tlpMain.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single
+        tlpRow1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single
+        tlpRow1Column0.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single
+        tlpRow1Column1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single
+        tlpRow1Column2.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single
+        '===DEBUG===
+
         ' Gauge 
         ag1 = New AGauge()
         ConfigureGauge(ag1)
         tlpRow1Column0.Controls.Add(ag1, 0, 1)
+        tlpRow1Column0_Resize(sender, e)
 
         ag2 = New AGauge()
         ConfigureGauge(ag2)
@@ -60,7 +69,7 @@ Public Class FormGraficTime
     End Sub
 
     Private Sub ConfigureGauge(gaugeN As AGauge)
-        gaugeN.Dock = DockStyle.None
+        gaugeN.Dock = DockStyle.Fill
         gaugeN.Anchor = AnchorStyles.None
 
         ' Semicerchio: 180° → da 135° a 45°
@@ -74,16 +83,16 @@ Public Class FormGraficTime
 
         ' Sfondo
         gaugeN.BaseArcColor = Color.LightGray
-        gaugeN.BaseArcRadius = 80
-        gaugeN.BaseArcWidth = 10
+        'gaugeN.BaseArcRadius = 80
+        gaugeN.BaseArcWidth = 35
 
         ' Ago
-        gaugeN.NeedleRadius = 70
+        'gaugeN.NeedleRadius = 70
         gaugeN.NeedleWidth = 5
 
         ' Numeri
         gaugeN.ScaleNumbersColor = Color.Black
-        gaugeN.ScaleNumbersRadius = 85
+        'gaugeN.ScaleNumbersRadius = 85
         gaugeN.ScaleNumbersFormat = "0"
     End Sub
 
@@ -124,4 +133,29 @@ Public Class FormGraficTime
         UpdateTitleGauge(lblTitle1, sTitle)
     End Sub
 
+    Private Sub tlpRow1Column0_Resize(sender As Object, e As EventArgs) Handles tlpRow1Column0.Resize
+        Dim cellWidth As Integer = tlpRow1Column0.GetColumnWidths()(0)
+        Dim cellHeight As Integer = tlpRow1Column0.GetRowHeights()(1)
+
+        'New size
+        ag1.Size = New Size(cellWidth, cellHeight)
+        Debug.WriteLine("ag1.Size " & ag1.Size.ToString())
+
+        ' Centra il disegno del gauge esattamente a metà della sua area disponibile nella cella
+        ag1.Center = New Point(ag1.Width / 2, ag1.Height / 2)
+        Debug.WriteLine("ag1.Center " & ag1.Center.ToString())
+
+        ' 2. Calcola il raggio basandoti sulla dimensione minore (per non uscire dai bordi)
+        Dim latoMinore As Integer = Math.Min(ag1.Width, ag1.Height)
+
+        ' 3. IMPORANTE: Qui è dove avviene l'ingrandimento reale!
+        ' Usiamo proporzioni basate sul lato del controllo
+        ag1.BaseArcRadius = CInt(latoMinore * 0.35)  ' L'arco occupa il 35% del lato
+        ag1.NeedleRadius = CInt(latoMinore * 0.32)  ' La lancetta quasi arriva all'arco
+        ag1.ScaleNumbersRadius = CInt(latoMinore * 0.37)
+        'ag1.ScaleLinesMinorInnerRadius = CInt(latoMinore * 0.5)
+        ag1.ScaleLinesMinorOuterRadius = CInt(latoMinore * 0.33)
+
+        ag1.Refresh()
+    End Sub
 End Class
