@@ -23,10 +23,10 @@ Partial Class FormGraficTime
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         tlpMain = New TableLayoutPanel()
-        tlpRow1 = New TableLayoutPanel()
         tlpRow1Column0 = New TableLayoutPanel()
         tlpRow1Column1 = New TableLayoutPanel()
         tlpRow1Column2 = New TableLayoutPanel()
+        tlpRow1 = New TableLayoutPanel()
         tlpMain.SuspendLayout()
         tlpRow1.SuspendLayout()
         SuspendLayout()
@@ -36,19 +36,59 @@ Partial Class FormGraficTime
         tlpMain.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         tlpMain.ColumnCount = 1
         tlpMain.ColumnStyles.Add(New ColumnStyle())
-        tlpMain.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 20F))
-        tlpMain.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 20F))
         tlpMain.Controls.Add(tlpRow1, 0, 1)
         tlpMain.Location = New Point(12, 12)
         tlpMain.Name = "tlpMain"
         tlpMain.RightToLeft = RightToLeft.No
-        tlpMain.RowCount = 4
-        tlpMain.RowStyles.Add(New RowStyle(SizeType.Percent, 25F))
-        tlpMain.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        tlpMain.RowStyles.Add(New RowStyle())
-        tlpMain.RowStyles.Add(New RowStyle(SizeType.Percent, 25F))
+        tlpMain.RowCount = 3
+        tlpMain.RowStyles.Add(New RowStyle(SizeType.Percent, 15F))
+        tlpMain.RowStyles.Add(New RowStyle(SizeType.Percent, 75F))
+        tlpMain.RowStyles.Add(New RowStyle(SizeType.Percent, 10F))
+        tlpMain.RowStyles.Add(New RowStyle(SizeType.Absolute, 20F))
         tlpMain.Size = New Size(776, 426)
         tlpMain.TabIndex = 0
+        ' 
+        ' tlpRow1Column0
+        ' 
+        tlpRow1Column0.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        tlpRow1Column0.ColumnCount = 1
+        tlpRow1Column0.ColumnStyles.Add(New ColumnStyle())
+        tlpRow1Column0.Location = New Point(3, 3)
+        tlpRow1Column0.Name = "tlpRow1Column0"
+        tlpRow1Column0.RowCount = 3
+        tlpRow1Column0.RowStyles.Add(New RowStyle(SizeType.Percent, 10F))
+        tlpRow1Column0.RowStyles.Add(New RowStyle(SizeType.Percent, 80F))
+        tlpRow1Column0.RowStyles.Add(New RowStyle(SizeType.Percent, 10F))
+        tlpRow1Column0.Size = New Size(249, 307)
+        tlpRow1Column0.TabIndex = 0
+        ' 
+        ' tlpRow1Column1
+        ' 
+        tlpRow1Column1.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        tlpRow1Column1.ColumnCount = 1
+        tlpRow1Column1.ColumnStyles.Add(New ColumnStyle())
+        tlpRow1Column1.Location = New Point(258, 3)
+        tlpRow1Column1.Name = "tlpRow1Column1"
+        tlpRow1Column1.RowCount = 3
+        tlpRow1Column1.RowStyles.Add(New RowStyle(SizeType.Percent, 10F))
+        tlpRow1Column1.RowStyles.Add(New RowStyle(SizeType.Percent, 80F))
+        tlpRow1Column1.RowStyles.Add(New RowStyle(SizeType.Percent, 10F))
+        tlpRow1Column1.Size = New Size(256, 307)
+        tlpRow1Column1.TabIndex = 1
+        ' 
+        ' tlpRow1Column2
+        ' 
+        tlpRow1Column2.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        tlpRow1Column2.ColumnCount = 1
+        tlpRow1Column2.ColumnStyles.Add(New ColumnStyle())
+        tlpRow1Column2.Location = New Point(520, 3)
+        tlpRow1Column2.Name = "tlpRow1Column2"
+        tlpRow1Column2.RowCount = 3
+        tlpRow1Column2.RowStyles.Add(New RowStyle(SizeType.Percent, 10F))
+        tlpRow1Column2.RowStyles.Add(New RowStyle(SizeType.Percent, 80F))
+        tlpRow1Column2.RowStyles.Add(New RowStyle(SizeType.Percent, 10F))
+        tlpRow1Column2.Size = New Size(250, 307)
+        tlpRow1Column2.TabIndex = 2
         ' 
         ' tlpRow1
         ' 
@@ -60,48 +100,12 @@ Partial Class FormGraficTime
         tlpRow1.Controls.Add(tlpRow1Column2, 2, 0)
         tlpRow1.Controls.Add(tlpRow1Column1, 1, 0)
         tlpRow1.Controls.Add(tlpRow1Column0, 0, 0)
-        tlpRow1.Location = New Point(3, 109)
+        tlpRow1.Location = New Point(3, 66)
         tlpRow1.Name = "tlpRow1"
         tlpRow1.RowCount = 1
         tlpRow1.RowStyles.Add(New RowStyle())
-        tlpRow1.Size = New Size(773, 207)
+        tlpRow1.Size = New Size(773, 313)
         tlpRow1.TabIndex = 0
-        ' 
-        ' tlpRow1Column0
-        ' 
-        tlpRow1Column0.ColumnCount = 1
-        tlpRow1Column0.ColumnStyles.Add(New ColumnStyle())
-        tlpRow1Column0.Location = New Point(3, 3)
-        tlpRow1Column0.Name = "tlpRow1Column0"
-        tlpRow1Column0.RowCount = 2
-        tlpRow1Column0.RowStyles.Add(New RowStyle(SizeType.Percent, 90F))
-        tlpRow1Column0.RowStyles.Add(New RowStyle(SizeType.Percent, 10F))
-        tlpRow1Column0.Size = New Size(249, 204)
-        tlpRow1Column0.TabIndex = 0
-        ' 
-        ' tlpRow1Column1
-        ' 
-        tlpRow1Column1.ColumnCount = 1
-        tlpRow1Column1.ColumnStyles.Add(New ColumnStyle())
-        tlpRow1Column1.Location = New Point(258, 3)
-        tlpRow1Column1.Name = "tlpRow1Column1"
-        tlpRow1Column1.RowCount = 2
-        tlpRow1Column1.RowStyles.Add(New RowStyle(SizeType.Percent, 90F))
-        tlpRow1Column1.RowStyles.Add(New RowStyle(SizeType.Percent, 10F))
-        tlpRow1Column1.Size = New Size(256, 204)
-        tlpRow1Column1.TabIndex = 1
-        ' 
-        ' tlpRow1Column2
-        ' 
-        tlpRow1Column2.ColumnCount = 1
-        tlpRow1Column2.ColumnStyles.Add(New ColumnStyle())
-        tlpRow1Column2.Location = New Point(520, 3)
-        tlpRow1Column2.Name = "tlpRow1Column2"
-        tlpRow1Column2.RowCount = 2
-        tlpRow1Column2.RowStyles.Add(New RowStyle(SizeType.Percent, 90F))
-        tlpRow1Column2.RowStyles.Add(New RowStyle(SizeType.Percent, 10F))
-        tlpRow1Column2.Size = New Size(249, 204)
-        tlpRow1Column2.TabIndex = 2
         ' 
         ' FormGraficTime
         ' 
@@ -118,7 +122,7 @@ Partial Class FormGraficTime
 
     Friend WithEvents tlpMain As TableLayoutPanel
     Friend WithEvents tlpRow1 As TableLayoutPanel
-    Friend WithEvents tlpRow1Column0 As TableLayoutPanel
     Friend WithEvents tlpRow1Column2 As TableLayoutPanel
     Friend WithEvents tlpRow1Column1 As TableLayoutPanel
+    Friend WithEvents tlpRow1Column0 As TableLayoutPanel
 End Class

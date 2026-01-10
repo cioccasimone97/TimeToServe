@@ -15,4 +15,8 @@
     Private Sub nudTime1_ValueChanged(sender As Object, e As EventArgs) Handles nudTime1.ValueChanged
         display.Set_nTime1(nudTime1.Value)
     End Sub
+
+    Private Sub txtTitleTime1_TextChanged(sender As Object, e As EventArgs) Handles txtTitleTime1.TextChanged
+        display.Set_sTitle1(txtTitleTime1.Text)
+    End Sub
 End Class
