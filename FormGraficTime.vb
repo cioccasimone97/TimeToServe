@@ -5,22 +5,27 @@ Public Class FormGraficTime
     Private ag1 As New AGauge()
     Private ag2 As New AGauge()
     Private ag3 As New AGauge()
+    Dim lbl1 As New Label()
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Gauge 1
+        ' Gauge 
         ag1 = New AGauge()
         ConfigureGauge(ag1)
-        TableLayoutPanel2.Controls.Add(ag1, 0, 0)
+        tlpRow1Column0.Controls.Add(ag1, 0, 0)
 
-        ' Gauge 2
         ag2 = New AGauge()
         ConfigureGauge(ag2)
-        TableLayoutPanel2.Controls.Add(ag2, 1, 0)
+        tlpRow1.Controls.Add(ag2, 1, 0)
 
-        ' Gauge 3
         ag3 = New AGauge()
         ConfigureGauge(ag3)
-        TableLayoutPanel2.Controls.Add(ag3, 2, 0)
+        tlpRow1.Controls.Add(ag3, 2, 0)
+
+        'Label gauge
+        lbl1.AutoSize = False
+        lbl1.Dock = DockStyle.Fill
+        lbl1.TextAlign = ContentAlignment.MiddleCenter
+        tlpRow1Column0.Controls.Add(lbl1, 0, 1)
     End Sub
 
     Private Sub ConfigureGauge(gaugeN As AGauge)
@@ -64,7 +69,12 @@ Public Class FormGraficTime
     End Sub
 
     Public Sub Set_nTime1(nVal As Integer)
-        ag1.Value = nVal
-        ChangeGaugeColor(ag1)
+        UpdateGauge(ag1, nVal, lbl1)
+    End Sub
+
+    Private Sub UpdateGauge(gaugeN As AGauge, nVal As Integer, lblN As Label)
+        gaugeN.Value = nVal
+        ChangeGaugeColor(gaugeN)
+        lblN.Text = gaugeN.Value.ToString("0") & " min."
     End Sub
 End Class
