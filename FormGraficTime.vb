@@ -6,6 +6,8 @@ Public Class FormGraficTime
     Private ag2 As New AGauge()
     Private ag3 As New AGauge()
     Dim lbl1 As New Label()
+    Dim lbl2 As New Label()
+    Dim lbl3 As New Label()
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Gauge 
@@ -15,17 +17,27 @@ Public Class FormGraficTime
 
         ag2 = New AGauge()
         ConfigureGauge(ag2)
-        tlpRow1.Controls.Add(ag2, 1, 0)
+        tlpRow1Column1.Controls.Add(ag2, 1, 0)
 
         ag3 = New AGauge()
         ConfigureGauge(ag3)
-        tlpRow1.Controls.Add(ag3, 2, 0)
+        tlpRow1Column2.Controls.Add(ag3, 2, 0)
 
         'Label gauge
-        lbl1.AutoSize = False
-        lbl1.Dock = DockStyle.Fill
-        lbl1.TextAlign = ContentAlignment.MiddleCenter
+        ConfigureLabel(lbl1)
         tlpRow1Column0.Controls.Add(lbl1, 0, 1)
+
+        ConfigureLabel(lbl2)
+        tlpRow1Column1.Controls.Add(lbl2, 0, 1)
+
+        ConfigureLabel(lbl3)
+        tlpRow1Column2.Controls.Add(lbl3, 0, 1)
+    End Sub
+
+    Private Sub ConfigureLabel(lblN As Label)
+        lblN.AutoSize = False
+        lblN.Dock = DockStyle.Fill
+        lblN.TextAlign = ContentAlignment.MiddleCenter
     End Sub
 
     Private Sub ConfigureGauge(gaugeN As AGauge)

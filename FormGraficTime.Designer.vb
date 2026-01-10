@@ -25,6 +25,8 @@ Partial Class FormGraficTime
         tlpMain = New TableLayoutPanel()
         tlpRow1 = New TableLayoutPanel()
         tlpRow1Column0 = New TableLayoutPanel()
+        tlpRow1Column1 = New TableLayoutPanel()
+        tlpRow1Column2 = New TableLayoutPanel()
         tlpMain.SuspendLayout()
         tlpRow1.SuspendLayout()
         SuspendLayout()
@@ -55,6 +57,8 @@ Partial Class FormGraficTime
         tlpRow1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 33F))
         tlpRow1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 34F))
         tlpRow1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 33F))
+        tlpRow1.Controls.Add(tlpRow1Column2, 2, 0)
+        tlpRow1.Controls.Add(tlpRow1Column1, 1, 0)
         tlpRow1.Controls.Add(tlpRow1Column0, 0, 0)
         tlpRow1.Location = New Point(3, 109)
         tlpRow1.Name = "tlpRow1"
@@ -75,6 +79,30 @@ Partial Class FormGraficTime
         tlpRow1Column0.Size = New Size(249, 204)
         tlpRow1Column0.TabIndex = 0
         ' 
+        ' tlpRow1Column1
+        ' 
+        tlpRow1Column1.ColumnCount = 1
+        tlpRow1Column1.ColumnStyles.Add(New ColumnStyle())
+        tlpRow1Column1.Location = New Point(258, 3)
+        tlpRow1Column1.Name = "tlpRow1Column1"
+        tlpRow1Column1.RowCount = 2
+        tlpRow1Column1.RowStyles.Add(New RowStyle(SizeType.Percent, 90F))
+        tlpRow1Column1.RowStyles.Add(New RowStyle(SizeType.Percent, 10F))
+        tlpRow1Column1.Size = New Size(256, 204)
+        tlpRow1Column1.TabIndex = 1
+        ' 
+        ' tlpRow1Column2
+        ' 
+        tlpRow1Column2.ColumnCount = 1
+        tlpRow1Column2.ColumnStyles.Add(New ColumnStyle())
+        tlpRow1Column2.Location = New Point(520, 3)
+        tlpRow1Column2.Name = "tlpRow1Column2"
+        tlpRow1Column2.RowCount = 2
+        tlpRow1Column2.RowStyles.Add(New RowStyle(SizeType.Percent, 90F))
+        tlpRow1Column2.RowStyles.Add(New RowStyle(SizeType.Percent, 10F))
+        tlpRow1Column2.Size = New Size(249, 204)
+        tlpRow1Column2.TabIndex = 2
+        ' 
         ' FormGraficTime
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -91,4 +119,6 @@ Partial Class FormGraficTime
     Friend WithEvents tlpMain As TableLayoutPanel
     Friend WithEvents tlpRow1 As TableLayoutPanel
     Friend WithEvents tlpRow1Column0 As TableLayoutPanel
+    Friend WithEvents tlpRow1Column2 As TableLayoutPanel
+    Friend WithEvents tlpRow1Column1 As TableLayoutPanel
 End Class
