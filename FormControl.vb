@@ -1,5 +1,7 @@
 ﻿Public Class FormControl
     Private display As FormGraficTime
+    Private fontNameMin As String
+    Private fontSizeMin As Single
 
     Private Sub FormControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Creo il form display
@@ -35,15 +37,16 @@
     End Sub
 
     Private Sub UpdateLabelFont()
+        fontNameMin = If(cmbFontMin.SelectedItem IsNot Nothing, cmbFontMin.SelectedItem.ToString(), Me.Font.ToString())
+        fontSizeMin = If(CSng(nudSizeMin.Value) = 0, 12, CSng(nudSizeMin.Value))
+
         nudTime1_ValueChanged(Nothing, EventArgs.Empty)
         nudTime2_ValueChanged(Nothing, EventArgs.Empty)
         nudTime3_ValueChanged(Nothing, EventArgs.Empty)
     End Sub
 
     Private Sub nudTime1_ValueChanged(sender As Object, e As EventArgs) Handles nudTime1.ValueChanged
-        Dim fontName As String = If(cmbFontMin.SelectedItem IsNot Nothing, cmbFontMin.SelectedItem.ToString(), Me.Font.ToString())
-        Dim fontSize As Single = If(CSng(nudSizeMin.Value) = 0, 12, CSng(nudSizeMin.Value))
-        display.Set_nTime1(nudTime1.Value, New Font(fontName, fontSize, FontStyle.Bold))
+        display.Set_nTime1(nudTime1.Value, New Font(fontNameMin, If(CSng(fontSizeMin) = 0, 12, CSng(fontSizeMin)), FontStyle.Bold))
     End Sub
 
     Private Sub txtTitleTime1_TextChanged(sender As Object, e As EventArgs) Handles txtTitleTime1.TextChanged
@@ -51,9 +54,7 @@
     End Sub
 
     Private Sub nudTime2_ValueChanged(sender As Object, e As EventArgs) Handles nudTime2.ValueChanged
-        Dim fontName As String = If(cmbFontMin.SelectedItem IsNot Nothing, cmbFontMin.SelectedItem.ToString(), Me.Font.ToString())
-        Dim fontSize As Single = If(CSng(nudSizeMin.Value) = 0, 12, CSng(nudSizeMin.Value))
-        display.Set_nTime2(nudTime2.Value, New Font(fontName, fontSize, FontStyle.Bold))
+        display.Set_nTime2(nudTime2.Value, New Font(fontNameMin, If(CSng(fontSizeMin) = 0, 12, CSng(fontSizeMin)), FontStyle.Bold))
     End Sub
 
     Private Sub txtTitleTime2_TextChanged(sender As Object, e As EventArgs) Handles txtTitleTime2.TextChanged
@@ -61,9 +62,7 @@
     End Sub
 
     Private Sub nudTime3_ValueChanged(sender As Object, e As EventArgs) Handles nudTime3.ValueChanged
-        Dim fontName As String = If(cmbFontMin.SelectedItem IsNot Nothing, cmbFontMin.SelectedItem.ToString(), Me.Font.ToString())
-        Dim fontSize As Single = If(CSng(nudSizeMin.Value) = 0, 12, CSng(nudSizeMin.Value))
-        display.Set_nTime3(nudTime3.Value, New Font(fontName, fontSize, FontStyle.Bold))
+        display.Set_nTime3(nudTime3.Value, New Font(fontNameMin, If(CSng(fontSizeMin) = 0, 12, CSng(fontSizeMin)), FontStyle.Bold))
     End Sub
 
     Private Sub txtTitleTime3_TextChanged(sender As Object, e As EventArgs) Handles txtTitleTime3.TextChanged
