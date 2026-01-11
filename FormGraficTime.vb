@@ -206,15 +206,18 @@ Public Class FormGraficTime
         UpdateGauge(ag3, v, lblMinute3, f)
     End Sub
 
-    Public Sub Set_sTitle1(t As String)
+    Public Sub Set_sTitle1(t As String, f As Font)
+        lblTitle1.Font = f
         lblTitle1.Text = t
     End Sub
 
-    Public Sub Set_sTitle2(t As String)
+    Public Sub Set_sTitle2(t As String, f As Font)
+        lblTitle2.Font = f
         lblTitle2.Text = t
     End Sub
 
-    Public Sub Set_sTitle3(t As String)
+    Public Sub Set_sTitle3(t As String, f As Font)
+        lblTitle3.Font = f
         lblTitle3.Text = t
     End Sub
 End Class

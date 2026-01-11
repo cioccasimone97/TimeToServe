@@ -36,9 +36,12 @@ Partial Class FormControl
         pnl1 = New Panel()
         pnl2 = New Panel()
         pnl3 = New Panel()
-        Panel1 = New Panel()
-        cmbFontMin = New ComboBox()
+        pnlFontMin = New Panel()
         nudSizeMin = New NumericUpDown()
+        cmbFontMin = New ComboBox()
+        pnlFontTitle = New Panel()
+        nudSizeTitle = New NumericUpDown()
+        cmbFontTitle = New ComboBox()
         CType(nudTime1, ComponentModel.ISupportInitialize).BeginInit()
         CType(nudTime2, ComponentModel.ISupportInitialize).BeginInit()
         CType(nudTime3, ComponentModel.ISupportInitialize).BeginInit()
@@ -47,8 +50,10 @@ Partial Class FormControl
         pnl1.SuspendLayout()
         pnl2.SuspendLayout()
         pnl3.SuspendLayout()
-        Panel1.SuspendLayout()
+        pnlFontMin.SuspendLayout()
         CType(nudSizeMin, ComponentModel.ISupportInitialize).BeginInit()
+        pnlFontTitle.SuspendLayout()
+        CType(nudSizeTitle, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' txtTitleTime1
@@ -125,7 +130,8 @@ Partial Class FormControl
         TableLayoutPanel1.ColumnCount = 1
         TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle())
         TableLayoutPanel1.Controls.Add(TableLayoutPanel2, 0, 2)
-        TableLayoutPanel1.Controls.Add(Panel1, 0, 3)
+        TableLayoutPanel1.Controls.Add(pnlFontMin, 0, 3)
+        TableLayoutPanel1.Controls.Add(pnlFontTitle, 0, 1)
         TableLayoutPanel1.Location = New Point(12, 12)
         TableLayoutPanel1.Name = "TableLayoutPanel1"
         TableLayoutPanel1.RowCount = 4
@@ -186,15 +192,22 @@ Partial Class FormControl
         pnl3.Size = New Size(250, 250)
         pnl3.TabIndex = 2
         ' 
-        ' Panel1
+        ' pnlFontMin
         ' 
-        Panel1.Controls.Add(nudSizeMin)
-        Panel1.Controls.Add(cmbFontMin)
-        Panel1.Dock = DockStyle.Fill
-        Panel1.Location = New Point(3, 385)
-        Panel1.Name = "Panel1"
-        Panel1.Size = New Size(773, 38)
-        Panel1.TabIndex = 1
+        pnlFontMin.Controls.Add(nudSizeMin)
+        pnlFontMin.Controls.Add(cmbFontMin)
+        pnlFontMin.Dock = DockStyle.Fill
+        pnlFontMin.Location = New Point(3, 385)
+        pnlFontMin.Name = "pnlFontMin"
+        pnlFontMin.Size = New Size(773, 38)
+        pnlFontMin.TabIndex = 1
+        ' 
+        ' nudSizeMin
+        ' 
+        nudSizeMin.Location = New Point(314, 6)
+        nudSizeMin.Name = "nudSizeMin"
+        nudSizeMin.Size = New Size(120, 23)
+        nudSizeMin.TabIndex = 1
         ' 
         ' cmbFontMin
         ' 
@@ -204,12 +217,30 @@ Partial Class FormControl
         cmbFontMin.Size = New Size(193, 23)
         cmbFontMin.TabIndex = 0
         ' 
-        ' nudSizeMin
+        ' pnlFontTitle
         ' 
-        nudSizeMin.Location = New Point(314, 6)
-        nudSizeMin.Name = "nudSizeMin"
-        nudSizeMin.Size = New Size(120, 23)
-        nudSizeMin.TabIndex = 1
+        pnlFontTitle.Controls.Add(nudSizeTitle)
+        pnlFontTitle.Controls.Add(cmbFontTitle)
+        pnlFontTitle.Dock = DockStyle.Fill
+        pnlFontTitle.Location = New Point(3, 45)
+        pnlFontTitle.Name = "pnlFontTitle"
+        pnlFontTitle.Size = New Size(773, 79)
+        pnlFontTitle.TabIndex = 2
+        ' 
+        ' nudSizeTitle
+        ' 
+        nudSizeTitle.Location = New Point(314, 32)
+        nudSizeTitle.Name = "nudSizeTitle"
+        nudSizeTitle.Size = New Size(120, 23)
+        nudSizeTitle.TabIndex = 3
+        ' 
+        ' cmbFontTitle
+        ' 
+        cmbFontTitle.FormattingEnabled = True
+        cmbFontTitle.Location = New Point(70, 32)
+        cmbFontTitle.Name = "cmbFontTitle"
+        cmbFontTitle.Size = New Size(193, 23)
+        cmbFontTitle.TabIndex = 2
         ' 
         ' FormControl
         ' 
@@ -233,8 +264,10 @@ Partial Class FormControl
         pnl2.PerformLayout()
         pnl3.ResumeLayout(False)
         pnl3.PerformLayout()
-        Panel1.ResumeLayout(False)
+        pnlFontMin.ResumeLayout(False)
         CType(nudSizeMin, ComponentModel.ISupportInitialize).EndInit()
+        pnlFontTitle.ResumeLayout(False)
+        CType(nudSizeTitle, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
     Friend WithEvents txtTitleTime1 As TextBox
@@ -251,7 +284,10 @@ Partial Class FormControl
     Friend WithEvents pnl1 As Panel
     Friend WithEvents pnl2 As Panel
     Friend WithEvents pnl3 As Panel
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents pnlFontMin As Panel
     Friend WithEvents cmbFontMin As ComboBox
     Friend WithEvents nudSizeMin As NumericUpDown
+    Friend WithEvents pnlFontTitle As Panel
+    Friend WithEvents nudSizeTitle As NumericUpDown
+    Friend WithEvents cmbFontTitle As ComboBox
 End Class
