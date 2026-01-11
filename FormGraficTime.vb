@@ -92,7 +92,6 @@ Public Class FormGraficTime
     End Sub
 
     Private Sub ConfigureLabelGauge(lbl As Label, gauge As AGauge)
-        lbl.Font = New Font("Segoe UI", 15, FontStyle.Bold)
         lbl.AutoSize = True
         MakeLabelAlwaysCentered(lbl, gauge, Me)
     End Sub
@@ -155,7 +154,7 @@ Public Class FormGraficTime
                                            ' Posiziona la label centrata sul punto
                                            Dim offsetX As Integer = CInt(-0.05 * targetControl.Width)
                                            Dim offsetY As Integer = CInt(0.1 * targetControl.Height)
-                                           lbl.Location = New Point(centerOnForm.X - lbl.Width \ 2 + offsetX,
+                                           lbl.Location = New Point(centerOnForm.X - lbl.Width \ 2,
                          centerOnForm.Y - lbl.Height \ 2 + offsetY)
                                            ' Porta sopra tutto
                                            lbl.BringToFront()
@@ -189,6 +188,7 @@ Public Class FormGraficTime
         ChangeGaugeColor(gN)
         lblN.Font = fontN
         lblN.Text = valN.ToString() & " min"
+        ConfigureLabelGauge(lblN, gN)
     End Sub
 
     ' ==============================

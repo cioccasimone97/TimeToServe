@@ -43,7 +43,7 @@ Public Class FormControl
     Private Sub UpdateLabelFont()
         fontNameMin = If(cmbFontMin.SelectedItem IsNot Nothing, cmbFontMin.SelectedItem.ToString(), Me.Font.ToString())
         fontSizeMin = If(CSng(nudSizeMin.Value) = 0, 12, CSng(nudSizeMin.Value))
-        Debug.WriteLine("fontNameMin" & fontNameMin.ToString() & " - fontSizeMin " & fontSizeMin.ToString())
+
         nudTime1_ValueChanged(Nothing, EventArgs.Empty)
         nudTime2_ValueChanged(Nothing, EventArgs.Empty)
         nudTime3_ValueChanged(Nothing, EventArgs.Empty)
