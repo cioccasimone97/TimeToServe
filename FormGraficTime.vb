@@ -100,7 +100,6 @@ Public Class FormGraficTime
     Private Sub ConfigureLabelTitleGauge(lbl As Label)
         lbl.Dock = DockStyle.Fill
         lbl.TextAlign = ContentAlignment.MiddleCenter
-        'lbl.Font = New Font("Segoe UI", 10, FontStyle.Bold)
     End Sub
 
     ' ==============================

@@ -1,4 +1,5 @@
-﻿Public Class FormControl
+﻿Imports System.Diagnostics.Metrics
+Public Class FormControl
     Private display As FormGraficTime
     Private fontNameMin As String
     Private fontSizeMin As Single
@@ -30,16 +31,19 @@
         AddHandler cmbFontMin.SelectedIndexChanged, AddressOf UpdateLabelFont
 
         ' --- NumericUpDown Dimensione Font ---
-        nudSizeMin.Minimum = 6
-        nudSizeMin.Maximum = 72
-        nudSizeMin.Value = 12
+        nudSizeMin.Minimum = 15
+        nudSizeMin.Maximum = 99
+        nudSizeMin.Value = 25
         AddHandler nudSizeMin.ValueChanged, AddressOf UpdateLabelFont
+
+        'Carico tutti gli aggiornamenti
+        UpdateLabelFont()
     End Sub
 
     Private Sub UpdateLabelFont()
         fontNameMin = If(cmbFontMin.SelectedItem IsNot Nothing, cmbFontMin.SelectedItem.ToString(), Me.Font.ToString())
         fontSizeMin = If(CSng(nudSizeMin.Value) = 0, 12, CSng(nudSizeMin.Value))
-
+        Debug.WriteLine("fontNameMin" & fontNameMin.ToString() & " - fontSizeMin " & fontSizeMin.ToString())
         nudTime1_ValueChanged(Nothing, EventArgs.Empty)
         nudTime2_ValueChanged(Nothing, EventArgs.Empty)
         nudTime3_ValueChanged(Nothing, EventArgs.Empty)
