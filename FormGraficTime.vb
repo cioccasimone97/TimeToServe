@@ -30,6 +30,8 @@ Public Class FormGraficTime
     Private Sub FormGraficTime_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         '===DEBUG===
         pnl1.BorderStyle = BorderStyle.FixedSingle
+        pnl2.BorderStyle = BorderStyle.FixedSingle
+        pnl3.BorderStyle = BorderStyle.FixedSingle
         '===DEBUG===
         CreaColonna(tlpRow1Column0, ag1, pnl1, lblTitle1, lblMinute1)
         CreaColonna(tlpRow1Column1, ag2, pnl2, lblTitle2, lblMinute2)
@@ -95,15 +97,14 @@ Public Class FormGraficTime
         MakeLabelAlwaysCentered(lbl, gauge, Me)
     End Sub
 
-
     Private Sub ConfigureLabelTitleGauge(lbl As Label)
         lbl.Dock = DockStyle.Fill
         lbl.TextAlign = ContentAlignment.MiddleCenter
-        lbl.Font = New Font("Segoe UI", 10, FontStyle.Bold)
+        'lbl.Font = New Font("Segoe UI", 10, FontStyle.Bold)
     End Sub
 
     ' ==============================
-    ' RESIZE CORRETTO (SUL PANEL)
+    ' RESIZE
     ' ==============================
     Private Sub Panel_Resize(sender As Object, e As EventArgs)
         Dim pnl As Panel = CType(sender, Panel)
@@ -134,26 +135,6 @@ Public Class FormGraficTime
         g.ScaleLinesMinorOuterRadius = CInt(lato * 0.29)
 
         g.Invalidate()
-    End Sub
-
-    ' ==============================
-    ' AGGIORNAMENTO DATI
-    ' ==============================
-    Private Sub ChangeGaugeColor(g As AGauge)
-        Select Case g.Value
-            Case <= 45
-                g.BaseArcColor = PastelGreen
-            Case <= 90
-                g.BaseArcColor = PastelYellow
-            Case Else
-                g.BaseArcColor = PastelRed
-        End Select
-    End Sub
-
-    Private Sub UpdateGauge(g As AGauge, valore As Integer, lbl As Label)
-        g.Value = valore
-        ChangeGaugeColor(g)
-        lbl.Text = valore.ToString() & " min"
     End Sub
 
     Public Sub MakeLabelAlwaysCentered(lbl As Label, targetControl As Control, parentForm As Form)
@@ -191,18 +172,39 @@ Public Class FormGraficTime
     End Sub
 
     ' ==============================
+    ' AGGIORNAMENTO DATI
+    ' ==============================
+    Private Sub ChangeGaugeColor(g As AGauge)
+        Select Case g.Value
+            Case <= 45
+                g.BaseArcColor = PastelGreen
+            Case <= 90
+                g.BaseArcColor = PastelYellow
+            Case Else
+                g.BaseArcColor = PastelRed
+        End Select
+    End Sub
+
+    Private Sub UpdateGauge(gN As AGauge, valN As Integer, lblN As Label, fontN As Font)
+        gN.Value = valN
+        ChangeGaugeColor(gN)
+        lblN.Font = fontN
+        lblN.Text = valN.ToString() & " min"
+    End Sub
+
+    ' ==============================
     ' CHIAMATE ESTERNE
     ' ==============================
-    Public Sub Set_nTime1(v As Integer)
-        UpdateGauge(ag1, v, lblMinute1)
+    Public Sub Set_nTime1(v As Integer, f As Font)
+        UpdateGauge(ag1, v, lblMinute1, f)
     End Sub
 
-    Public Sub Set_nTime2(v As Integer)
-        UpdateGauge(ag2, v, lblMinute2)
+    Public Sub Set_nTime2(v As Integer, f As Font)
+        UpdateGauge(ag2, v, lblMinute2, f)
     End Sub
 
-    Public Sub Set_nTime3(v As Integer)
-        UpdateGauge(ag3, v, lblMinute3)
+    Public Sub Set_nTime3(v As Integer, f As Font)
+        UpdateGauge(ag3, v, lblMinute3, f)
     End Sub
 
     Public Sub Set_sTitle1(t As String)
