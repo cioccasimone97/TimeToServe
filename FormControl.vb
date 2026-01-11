@@ -8,7 +8,7 @@
 
         'Eseguo init da codice, altrimenti display potrebbe andare in errore
         nudTime1.Minimum = 5
-        nudTime1.Maximum = 100
+        nudTime1.Maximum = 120
         nudTime1.Increment = 5
     End Sub
 

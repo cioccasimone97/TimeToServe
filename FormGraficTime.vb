@@ -90,7 +90,7 @@ Public Class FormGraficTime
     End Sub
 
     Private Sub ConfigureLabelGauge(lbl As Label, gauge As AGauge)
-        lbl.Font = New Font("Segoe UI", 11, FontStyle.Bold)
+        lbl.Font = New Font("Segoe UI", 15, FontStyle.Bold)
         lbl.AutoSize = True
         MakeLabelAlwaysCentered(lbl, gauge, Me)
     End Sub
@@ -173,7 +173,7 @@ Public Class FormGraficTime
                                            Dim centerOnForm As Point = targetControl.Parent.PointToScreen(centerInTarget)
                                            centerOnForm = parentForm.PointToClient(centerOnForm)
                                            ' Posiziona la label centrata sul punto
-                                           Dim offsetX As Integer = CInt(-0.03 * targetControl.Width)
+                                           Dim offsetX As Integer = CInt(-0.05 * targetControl.Width)
                                            Dim offsetY As Integer = CInt(0.1 * targetControl.Height)
                                            lbl.Location = New Point(centerOnForm.X - lbl.Width \ 2 + offsetX,
                          centerOnForm.Y - lbl.Height \ 2 + offsetY)
