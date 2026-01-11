@@ -25,11 +25,9 @@ Public Class FormGraficTime
     ' FORM LOAD
     ' ==============================
     Private Sub FormGraficTime_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         CreaColonna(tlpRow1Column0, ag1, pnl1, lblTitle1, lblMinute1)
         CreaColonna(tlpRow1Column1, ag2, pnl2, lblTitle2, lblMinute2)
         CreaColonna(tlpRow1Column2, ag3, pnl3, lblTitle3, lblMinute3)
-
     End Sub
 
     ' ==============================
@@ -53,7 +51,7 @@ Public Class FormGraficTime
 
         ' --- Gauge ---
         ConfigureGauge(g)
-        g.Dock = DockStyle.None          ' 🔴 FONDAMENTALE
+        g.Dock = DockStyle.None
         pnl.Controls.Add(g)
 
         ' Resize gestito DAL PANEL
@@ -71,7 +69,6 @@ Public Class FormGraficTime
     Private Sub ConfigureGauge(g As AGauge)
         g.MinValue = 0
         g.MaxValue = 120
-        'g.Value = 0
 
         g.BaseArcStart = 180
         g.BaseArcSweep = 180
@@ -124,8 +121,6 @@ Public Class FormGraficTime
 
         g.Invalidate()
     End Sub
-
-
 
     ' ==============================
     ' AGGIORNAMENTO DATI
