@@ -25,11 +25,11 @@ Partial Class FormGraficTime
         tlpMain = New TableLayoutPanel()
         tlpRow1 = New TableLayoutPanel()
         tlpRow1Column2 = New TableLayoutPanel()
+        pnl3 = New Panel()
         tlpRow1Column1 = New TableLayoutPanel()
         pnl2 = New Panel()
         tlpRow1Column0 = New TableLayoutPanel()
         pnl1 = New Panel()
-        pnl3 = New Panel()
         tlpMain.SuspendLayout()
         tlpRow1.SuspendLayout()
         tlpRow1Column2.SuspendLayout()
@@ -79,12 +79,20 @@ Partial Class FormGraficTime
         tlpRow1Column2.Controls.Add(pnl3, 0, 1)
         tlpRow1Column2.Location = New Point(520, 3)
         tlpRow1Column2.Name = "tlpRow1Column2"
-        tlpRow1Column2.RowCount = 3
+        tlpRow1Column2.RowCount = 2
         tlpRow1Column2.RowStyles.Add(New RowStyle(SizeType.Percent, 10F))
-        tlpRow1Column2.RowStyles.Add(New RowStyle(SizeType.Percent, 80F))
-        tlpRow1Column2.RowStyles.Add(New RowStyle(SizeType.Percent, 10F))
+        tlpRow1Column2.RowStyles.Add(New RowStyle(SizeType.Percent, 90F))
+        tlpRow1Column2.RowStyles.Add(New RowStyle(SizeType.Absolute, 20F))
         tlpRow1Column2.Size = New Size(250, 307)
         tlpRow1Column2.TabIndex = 2
+        ' 
+        ' pnl3
+        ' 
+        pnl3.Dock = DockStyle.Fill
+        pnl3.Location = New Point(3, 33)
+        pnl3.Name = "pnl3"
+        pnl3.Size = New Size(247, 271)
+        pnl3.TabIndex = 0
         ' 
         ' tlpRow1Column1
         ' 
@@ -94,18 +102,19 @@ Partial Class FormGraficTime
         tlpRow1Column1.Controls.Add(pnl2, 0, 1)
         tlpRow1Column1.Location = New Point(258, 3)
         tlpRow1Column1.Name = "tlpRow1Column1"
-        tlpRow1Column1.RowCount = 3
+        tlpRow1Column1.RowCount = 2
         tlpRow1Column1.RowStyles.Add(New RowStyle(SizeType.Percent, 10F))
-        tlpRow1Column1.RowStyles.Add(New RowStyle(SizeType.Percent, 80F))
-        tlpRow1Column1.RowStyles.Add(New RowStyle(SizeType.Percent, 10F))
+        tlpRow1Column1.RowStyles.Add(New RowStyle(SizeType.Percent, 90F))
+        tlpRow1Column1.RowStyles.Add(New RowStyle(SizeType.Absolute, 20F))
         tlpRow1Column1.Size = New Size(256, 307)
         tlpRow1Column1.TabIndex = 1
         ' 
         ' pnl2
         ' 
+        pnl2.Dock = DockStyle.Fill
         pnl2.Location = New Point(3, 33)
         pnl2.Name = "pnl2"
-        pnl2.Size = New Size(253, 239)
+        pnl2.Size = New Size(253, 271)
         pnl2.TabIndex = 0
         ' 
         ' tlpRow1Column0
@@ -116,26 +125,20 @@ Partial Class FormGraficTime
         tlpRow1Column0.Controls.Add(pnl1, 0, 1)
         tlpRow1Column0.Location = New Point(3, 3)
         tlpRow1Column0.Name = "tlpRow1Column0"
-        tlpRow1Column0.RowCount = 3
+        tlpRow1Column0.RowCount = 2
         tlpRow1Column0.RowStyles.Add(New RowStyle(SizeType.Percent, 10F))
-        tlpRow1Column0.RowStyles.Add(New RowStyle(SizeType.Percent, 80F))
-        tlpRow1Column0.RowStyles.Add(New RowStyle(SizeType.Percent, 10F))
+        tlpRow1Column0.RowStyles.Add(New RowStyle(SizeType.Percent, 90F))
+        tlpRow1Column0.RowStyles.Add(New RowStyle(SizeType.Absolute, 20F))
         tlpRow1Column0.Size = New Size(249, 307)
         tlpRow1Column0.TabIndex = 0
         ' 
         ' pnl1
         ' 
+        pnl1.Dock = DockStyle.Fill
         pnl1.Location = New Point(3, 33)
         pnl1.Name = "pnl1"
-        pnl1.Size = New Size(246, 239)
+        pnl1.Size = New Size(246, 271)
         pnl1.TabIndex = 0
-        ' 
-        ' pnl3
-        ' 
-        pnl3.Location = New Point(3, 33)
-        pnl3.Name = "pnl3"
-        pnl3.Size = New Size(247, 239)
-        pnl3.TabIndex = 0
         ' 
         ' FormGraficTime
         ' 

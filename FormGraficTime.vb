@@ -1,4 +1,5 @@
-﻿Imports System.Drawing.Drawing2D
+﻿Imports System.Diagnostics.Metrics
+Imports System.Drawing.Drawing2D
 Imports AGauge
 
 Public Class FormGraficTime
@@ -55,11 +56,6 @@ Public Class FormGraficTime
         ConfigureLabelTitleGauge(lblTitle)
         tlp.Controls.Add(lblTitle, 0, 0)
 
-        ' --- Panel ---
-        pnl.Dock = DockStyle.Fill
-        pnl.Padding = New Padding(6)
-        tlp.Controls.Add(pnl, 0, 1)
-
         ' --- Gauge ---
         ConfigureGauge(g)
         g.Dock = DockStyle.None
@@ -69,9 +65,7 @@ Public Class FormGraficTime
         AddHandler pnl.Resize, AddressOf Panel_Resize
 
         ' --- Minuti ---
-        ConfigureLabelGauge(lblMinute, pnl)
-        'tlp.Controls.Add(lblMinute, 0, 2)
-        pnl.Controls.Add(lblMinute)
+        ConfigureLabelGauge(lblMinute, g)
     End Sub
 
     ' ==============================
@@ -95,22 +89,12 @@ Public Class FormGraficTime
         g.ScaleLinesMajorStepValue = 30
     End Sub
 
-    Private Sub ConfigureLabelGauge(lbl As Label, panel As Panel)
+    Private Sub ConfigureLabelGauge(lbl As Label, gauge As AGauge)
         lbl.Font = New Font("Segoe UI", 11, FontStyle.Bold)
         lbl.AutoSize = True
-
-        ' Calcola il centro del panel (rispetto al panel stesso!)
-        Dim panelCenter As New Point(panel.Width \ 2, panel.Height \ 2)
-        Debug.WriteLine("panelCenter " & panelCenter.ToString())
-
-        ' Posiziona la label centrata
-        lbl.Location = New Point(panelCenter.X - lbl.Width \ 2, panelCenter.Y - lbl.Height \ 2)
-
-        ' Porta la label sopra tutti i controlli del panel
-        lbl.BringToFront()
-
-        Debug.WriteLine("lbl.Location" & lbl.Location.ToString())
+        MakeLabelAlwaysCentered(lbl, gauge, Me)
     End Sub
+
 
     Private Sub ConfigureLabelTitleGauge(lbl As Label)
         lbl.Dock = DockStyle.Fill
@@ -170,6 +154,40 @@ Public Class FormGraficTime
         g.Value = valore
         ChangeGaugeColor(g)
         lbl.Text = valore.ToString() & " min"
+    End Sub
+
+    Public Sub MakeLabelAlwaysCentered(lbl As Label, targetControl As Control, parentForm As Form)
+        ' Imposta font e AutoSize se non già fatto
+        lbl.AutoSize = True
+        lbl.BackColor = Color.Transparent
+        lbl.ForeColor = Color.Black
+        If Not parentForm.Controls.Contains(lbl) Then
+            parentForm.Controls.Add(lbl)
+        End If
+
+        ' Funzione interna per aggiornare la posizione
+        Dim UpdatePosition As Action = Sub()
+                                           ' Calcola centro del target relativo al parent
+                                           Dim centerInTarget As New Point(targetControl.Width \ 2, targetControl.Height \ 2)
+                                           ' Converte in coordinate relative al form
+                                           Dim centerOnForm As Point = targetControl.Parent.PointToScreen(centerInTarget)
+                                           centerOnForm = parentForm.PointToClient(centerOnForm)
+                                           ' Posiziona la label centrata sul punto
+                                           Dim offsetX As Integer = CInt(-0.03 * targetControl.Width)
+                                           Dim offsetY As Integer = CInt(0.1 * targetControl.Height)
+                                           lbl.Location = New Point(centerOnForm.X - lbl.Width \ 2 + offsetX,
+                         centerOnForm.Y - lbl.Height \ 2 + offsetY)
+                                           ' Porta sopra tutto
+                                           lbl.BringToFront()
+                                       End Sub
+
+        ' Aggiorna subito la posizione
+        UpdatePosition()
+
+        ' Aggiorna la posizione al resize del form o del target
+        AddHandler parentForm.Resize, Sub(s, e) UpdatePosition()
+        AddHandler targetControl.Resize, Sub(s, e) UpdatePosition()
+        AddHandler targetControl.Parent.Resize, Sub(s, e) UpdatePosition() ' Se target è dentro panel o tablelayout
     End Sub
 
     ' ==============================
