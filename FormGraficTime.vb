@@ -1,4 +1,5 @@
-﻿Imports AGauge
+﻿Imports System.Drawing.Drawing2D
+Imports AGauge
 
 Public Class FormGraficTime
 
@@ -6,11 +7,6 @@ Public Class FormGraficTime
     Private ag1 As New AGauge()
     Private ag2 As New AGauge()
     Private ag3 As New AGauge()
-
-    ' ====== PANEL CONTENITORI ======
-    Private pnl1 As New Panel()
-    Private pnl2 As New Panel()
-    Private pnl3 As New Panel()
 
     ' ====== LABEL ======
     Private lblMinute1 As New Label()
@@ -21,13 +17,28 @@ Public Class FormGraficTime
     Private lblTitle2 As New Label()
     Private lblTitle3 As New Label()
 
+    '===== COLORI ======
+    Public PastelGreen As Color = Color.FromArgb(255, 0, 200, 0)
+    Public PastelYellow As Color = Color.FromArgb(255, 240, 220, 50)
+    Public PastelRed As Color = Color.FromArgb(255, 220, 50, 60)
+
+
     ' ==============================
     ' FORM LOAD
     ' ==============================
     Private Sub FormGraficTime_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        '===DEBUG===
+        pnl1.BorderStyle = BorderStyle.FixedSingle
+        '===DEBUG===
         CreaColonna(tlpRow1Column0, ag1, pnl1, lblTitle1, lblMinute1)
         CreaColonna(tlpRow1Column1, ag2, pnl2, lblTitle2, lblMinute2)
         CreaColonna(tlpRow1Column2, ag3, pnl3, lblTitle3, lblMinute3)
+
+        ' Rimuove il bordo della finestra
+        'Me.FormBorderStyle = FormBorderStyle.None
+
+        ' Massimizza la finestra
+        Me.WindowState = FormWindowState.Maximized
     End Sub
 
     ' ==============================
@@ -58,9 +69,9 @@ Public Class FormGraficTime
         AddHandler pnl.Resize, AddressOf Panel_Resize
 
         ' --- Minuti ---
-        ConfigureLabelGauge(lblMinute)
-        tlp.Controls.Add(lblMinute, 0, 2)
-
+        ConfigureLabelGauge(lblMinute, pnl)
+        'tlp.Controls.Add(lblMinute, 0, 2)
+        pnl.Controls.Add(lblMinute)
     End Sub
 
     ' ==============================
@@ -75,17 +86,30 @@ Public Class FormGraficTime
         g.BaseArcWidth = 35
         g.BaseArcColor = Color.LightGray
 
+        g.NeedleType = NeedleType.Advance
         g.NeedleWidth = 4
 
         g.ScaleNumbersFormat = "0"
         g.ScaleNumbersColor = Color.Black
 
+        g.ScaleLinesMajorStepValue = 30
     End Sub
 
-    Private Sub ConfigureLabelGauge(lbl As Label)
-        lbl.Dock = DockStyle.Fill
-        lbl.TextAlign = ContentAlignment.MiddleCenter
+    Private Sub ConfigureLabelGauge(lbl As Label, panel As Panel)
         lbl.Font = New Font("Segoe UI", 11, FontStyle.Bold)
+        lbl.AutoSize = True
+
+        ' Calcola il centro del panel (rispetto al panel stesso!)
+        Dim panelCenter As New Point(panel.Width \ 2, panel.Height \ 2)
+        Debug.WriteLine("panelCenter " & panelCenter.ToString())
+
+        ' Posiziona la label centrata
+        lbl.Location = New Point(panelCenter.X - lbl.Width \ 2, panelCenter.Y - lbl.Height \ 2)
+
+        ' Porta la label sopra tutti i controlli del panel
+        lbl.BringToFront()
+
+        Debug.WriteLine("lbl.Location" & lbl.Location.ToString())
     End Sub
 
     Private Sub ConfigureLabelTitleGauge(lbl As Label)
@@ -118,6 +142,12 @@ Public Class FormGraficTime
         g.BaseArcRadius = CInt(lato * 0.3)
         g.NeedleRadius = CInt(lato * 0.26)
         g.ScaleNumbersRadius = CInt(lato * 0.34)
+        g.ScaleLinesInterInnerRadius = CInt(lato * 0.28)
+        g.ScaleLinesInterOuterRadius = CInt(lato * 0.31)
+        g.ScaleLinesMajorInnerRadius = CInt(lato * 0.28)
+        g.ScaleLinesMajorOuterRadius = CInt(lato * 0.31)
+        g.ScaleLinesMinorInnerRadius = CInt(lato * 0.28)
+        g.ScaleLinesMinorOuterRadius = CInt(lato * 0.29)
 
         g.Invalidate()
     End Sub
@@ -128,11 +158,11 @@ Public Class FormGraficTime
     Private Sub ChangeGaugeColor(g As AGauge)
         Select Case g.Value
             Case <= 45
-                g.BaseArcColor = Color.Green
+                g.BaseArcColor = PastelGreen
             Case <= 90
-                g.BaseArcColor = Color.Goldenrod
+                g.BaseArcColor = PastelYellow
             Case Else
-                g.BaseArcColor = Color.Red
+                g.BaseArcColor = PastelRed
         End Select
     End Sub
 
@@ -168,5 +198,4 @@ Public Class FormGraficTime
     Public Sub Set_sTitle3(t As String)
         lblTitle3.Text = t
     End Sub
-
 End Class

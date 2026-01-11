@@ -26,9 +26,15 @@ Partial Class FormGraficTime
         tlpRow1 = New TableLayoutPanel()
         tlpRow1Column2 = New TableLayoutPanel()
         tlpRow1Column1 = New TableLayoutPanel()
+        pnl2 = New Panel()
         tlpRow1Column0 = New TableLayoutPanel()
+        pnl1 = New Panel()
+        pnl3 = New Panel()
         tlpMain.SuspendLayout()
         tlpRow1.SuspendLayout()
+        tlpRow1Column2.SuspendLayout()
+        tlpRow1Column1.SuspendLayout()
+        tlpRow1Column0.SuspendLayout()
         SuspendLayout()
         ' 
         ' tlpMain
@@ -70,6 +76,7 @@ Partial Class FormGraficTime
         tlpRow1Column2.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         tlpRow1Column2.ColumnCount = 1
         tlpRow1Column2.ColumnStyles.Add(New ColumnStyle())
+        tlpRow1Column2.Controls.Add(pnl3, 0, 1)
         tlpRow1Column2.Location = New Point(520, 3)
         tlpRow1Column2.Name = "tlpRow1Column2"
         tlpRow1Column2.RowCount = 3
@@ -84,6 +91,7 @@ Partial Class FormGraficTime
         tlpRow1Column1.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         tlpRow1Column1.ColumnCount = 1
         tlpRow1Column1.ColumnStyles.Add(New ColumnStyle())
+        tlpRow1Column1.Controls.Add(pnl2, 0, 1)
         tlpRow1Column1.Location = New Point(258, 3)
         tlpRow1Column1.Name = "tlpRow1Column1"
         tlpRow1Column1.RowCount = 3
@@ -93,11 +101,19 @@ Partial Class FormGraficTime
         tlpRow1Column1.Size = New Size(256, 307)
         tlpRow1Column1.TabIndex = 1
         ' 
+        ' pnl2
+        ' 
+        pnl2.Location = New Point(3, 33)
+        pnl2.Name = "pnl2"
+        pnl2.Size = New Size(253, 239)
+        pnl2.TabIndex = 0
+        ' 
         ' tlpRow1Column0
         ' 
         tlpRow1Column0.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         tlpRow1Column0.ColumnCount = 1
         tlpRow1Column0.ColumnStyles.Add(New ColumnStyle())
+        tlpRow1Column0.Controls.Add(pnl1, 0, 1)
         tlpRow1Column0.Location = New Point(3, 3)
         tlpRow1Column0.Name = "tlpRow1Column0"
         tlpRow1Column0.RowCount = 3
@@ -106,6 +122,20 @@ Partial Class FormGraficTime
         tlpRow1Column0.RowStyles.Add(New RowStyle(SizeType.Percent, 10F))
         tlpRow1Column0.Size = New Size(249, 307)
         tlpRow1Column0.TabIndex = 0
+        ' 
+        ' pnl1
+        ' 
+        pnl1.Location = New Point(3, 33)
+        pnl1.Name = "pnl1"
+        pnl1.Size = New Size(246, 239)
+        pnl1.TabIndex = 0
+        ' 
+        ' pnl3
+        ' 
+        pnl3.Location = New Point(3, 33)
+        pnl3.Name = "pnl3"
+        pnl3.Size = New Size(247, 239)
+        pnl3.TabIndex = 0
         ' 
         ' FormGraficTime
         ' 
@@ -117,6 +147,9 @@ Partial Class FormGraficTime
         Text = "FormGraficTime"
         tlpMain.ResumeLayout(False)
         tlpRow1.ResumeLayout(False)
+        tlpRow1Column2.ResumeLayout(False)
+        tlpRow1Column1.ResumeLayout(False)
+        tlpRow1Column0.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
 
@@ -125,4 +158,7 @@ Partial Class FormGraficTime
     Friend WithEvents tlpRow1Column2 As TableLayoutPanel
     Friend WithEvents tlpRow1Column1 As TableLayoutPanel
     Friend WithEvents tlpRow1Column0 As TableLayoutPanel
+    Friend WithEvents pnl1 As Panel
+    Friend WithEvents pnl2 As Panel
+    Friend WithEvents pnl3 As Panel
 End Class
